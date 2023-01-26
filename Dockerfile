@@ -1,6 +1,7 @@
-FROM gcc:latest
+FROM alpine:latest
 
-ADD --keep-git-dir=true https://github.com/pisich/cppsich-hotel.git /source
+RUN apk add git g++\
+  && git clone https://github.com/pisich/cppsich-hotel.git /source/ \
+  && g++ -o CPPsich_Hotel /source/main.cpp
 
-RUN g++ -o CPPsich_Hotel main.cpp
 CMD ["./CPPsich_Hotel"]
