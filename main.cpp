@@ -28,7 +28,7 @@ public:
 
   Room(size_t roomNumber, string description, size_t floor, char section,
        RoomState roomState, double costPerNight, size_t totalOccupancy, size_t actualOccupancy) :
-          roomNumber(roomNumber), description(description), floor(floor), section(section),
+          roomNumber(roomNumber), description(std::move(description)), floor(floor), section(section),
           roomState(roomState), costPerNight(costPerNight), totalOccupancy(totalOccupancy),
           actualOccupancy(actualOccupancy) {}
   
