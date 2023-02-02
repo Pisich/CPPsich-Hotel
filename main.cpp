@@ -91,7 +91,7 @@ public:
   size_t age;
   Person(string firstName, string lastName, size_t age) : firstName(std::move(firstName)),
     lastName(std::move(lastName)), age(age) {}
-}
+};
 
 class Employee : Person
 {
@@ -99,16 +99,16 @@ protected:
   size_t workingFloor;
   double salary;
 public:
-  Employee() {}
-}
+  Employee(string firstName, string lastName, size_t age) {}
+};
 
 class Guest : Person
 {
 protected:
   Room[5] reservedRooms{};
 public:
-  Guest() {}
-}
+  Guest(string firstName, string lastName, size_t age) {}
+};
 
 class Hotel
 {
@@ -119,7 +119,7 @@ public:
   Room[] rooms;
   string name;
   Hotel(string name) : name(std::move(name)) {}
-}
+};
 
 int main()
 {
