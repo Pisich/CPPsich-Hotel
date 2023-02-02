@@ -20,7 +20,8 @@ protected:
   RoomState roomState;
   double costPerNight;
   size_t totalOccupancy;
-  size_t actualOccupancy;
+  size_t actualOccupancy = 0;
+  Guest[totalOccupancy] guests{};
 
 public:
   const size_t roomNumber;
@@ -81,9 +82,50 @@ public:
   }
 };
 
+class Person
+{
+protected:
+  string lastName;
+public:
+  string firstName;
+  size_t age;
+  Person(string firstName, string lastName, size_t age) : firstName(std::move(firstName)),
+    lastName(std::move(lastName)), age(age) {}
+}
+
+class Employee : Person
+{
+protected:
+  size_t workingFloor;
+  double salary;
+public:
+  Employee() {}
+}
+
+class Guest : Person
+{
+protected:
+  Room[5] reservedRooms{};
+public:
+  Guest() {}
+}
+
+class Hotel
+{
+protected:
+  double income;
+  Employee[] employees;
+public:
+  Room[] rooms;
+  string name;
+  Hotel(string name) : name(std::move(name)) {}
+}
+
 int main()
 {
+  Hotel CPPsichHotel{"CPPsichHotel"};
   Room x{255, "Showcase room", 2, 'C', RoomState::Available, 45.5, 12, 6};
+  Employee manager{};
   std::cout << x.description;
   return 0;
 }
